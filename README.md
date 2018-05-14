@@ -44,6 +44,7 @@ Packages Needed
 - fs-nextra
 - cheerio
 - got
+- sqlite
 
 When done downloading the dependencies, run node Main.js, to start the bot.
 
