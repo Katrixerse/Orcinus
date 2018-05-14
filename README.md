@@ -4,7 +4,7 @@ My newest discord bot is in very early development, written in discord.js of cou
 If you find any bugs please make a issue so i can look into it and fix it
 
 Made By:
-- DarkDestro (me)
+- SyntheticGenerations (me)
 - dragonfire535
 - YorkAARGH
 
