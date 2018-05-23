@@ -1,12 +1,12 @@
 # Orcinus
-My newest discord bot is in very early development, written in discord.js of course 
+Written in discord.js of course 
 
 If you find any bugs please make a issue so i can look into it and fix it
 
 Made By:
 - SyntheticGenerations (me)
-- dragonfire535
-- YorkAARGH
+- dragonfire535 - Some commands
+- YorkAARGH - How to use sqlite
 
  will use sqlite instead of jsons to store data (Better this way fs had issues which cause it to currupt if your bot gets in to many servers and is constantly reading/writing data)
 
