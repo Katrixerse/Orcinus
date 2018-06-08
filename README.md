@@ -6,7 +6,7 @@ If you find any bugs please make a issue so i can look into it and fix it
 Made By:
 - SyntheticGenerations (me)
 - dragonfire535 - Some commands
-- YorkAARGH - How to use sqlite
+- YorkAARGH - How to use sqlite from this guide https://anidiotsguide_old.gitbooks.io/discord-js-bot-guide/content/coding-guides/storing-data-in-an-sqlite-file.html
 
  will use sqlite instead of jsons to store data (Better this way fs had issues which cause it to currupt if your bot gets in to many servers and is constantly reading/writing data)
 
