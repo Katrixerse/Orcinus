@@ -10,7 +10,7 @@ module.exports = async (client, oldMember, newMember) => {
     if (!oldMember.guild.member(client.user).hasPermission('READ_MESSAGE_HISTORY')) return;
     try {
 sql.get(`SELECT * FROM scores WHERE guildId ="${oldMember.guild.id}"`).then(row => {
-      let modlog = oldMember.guild.channels.find('name', row.logschannel);
+      let modlog = oldMember.guild.channels.find(channel => channel.name == row.logschannel);
        if (!modlog) return;
        if (row.logsenabled === "disabled") return;
       if (oldMember.roles.size !== newMember.roles.size) {
