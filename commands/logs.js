@@ -31,7 +31,7 @@ exports.run = (client, message, args) => {
         } else if (toenable === "2") {
             sql.run(`UPDATE scores SET logsenabled = "disabled" WHERE guildId = ${message.guild.id}`);
             message.channel.send("I have disabled logs for this guild.")
-            let modlog = message.guild.channels.find('name', row.logschannel);
+            let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
             const embed = new Discord.RichEmbed()
           .setColor(0x00A2E8)
           .setTitle("Case #" + row.casenumber + " | Action: Logs Disabled")
@@ -49,7 +49,7 @@ exports.run = (client, message, args) => {
           if (!row.logschannel) return;
           sql.run(`UPDATE scores SET logschannel = "${newlogschannel}", casenumber = ${row.casenumber + 1} WHERE guildId = ${message.guild.id}`);
           message.channel.send("I have set the new guild logs channel to " + newlogschannel)
-          let modlog = message.guild.channels.find('name', row.logschannel);
+          let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
            const embed = new Discord.RichEmbed()
          .setColor(0x00A2E8)
          .setTitle("Case #" + row.casenumber + " | Action: Logs Channel Change")
