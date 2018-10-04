@@ -97,7 +97,7 @@ client.on("guildMemberAdd", (member) => {
       member.guild.member(member.user.id).kick().catch(console.error);
     } else {
       if (!member.guild.member(client.user).hasPermission('MANAGE_ROLES')) return;
-        let autoRole = client.guilds.get(member.guild.id).roles.find('name', row.roletogive);
+        let autoRole = client.guilds.get(member.guild.id).roles.find(r => r.name == row.roletogive);
         if (!autoRole) return
         member.guild.member(member.user.id).addRole(autoRole).catch(console.error);
     }
@@ -124,7 +124,7 @@ client.on('messageReactionAdd', (reaction, user) => {
       .addField('Channel', `${message.channel}`, true)
       .addField('Message', `${message.content}`, false)
       .setTimestamp()
-    let modlog = message.guild.channels.find('name', 'starboard');
+    let modlog = message.guild.channels.find(channel => channel.name == 'starboard');
     if (!modlog) return
     if (user.id === message.author.id) return message.channel.send(`${message.author}, You can't star your own messages!`)
 
