@@ -41,7 +41,7 @@ exports.run = async (client, message, args) => {
     })
     sql.get(`SELECT * FROM scores WHERE guildId ="${message.guild.id}"`).then(row => {
         sql.run(`UPDATE scores SET casenumber = ${row.casenumber + 1} WHERE guildId = ${message.guild.id}`);
-        let modlog = message.guild.channels.find('name', row.logschannel)
+        let modlog = message.guild.channels.find(channel => channel.name == row.logschannel)
         let reason3 = args.slice(1).join(' ');
         const embed = new Discord.RichEmbed()
             .setColor(0x00A2E8)
