@@ -1,3 +1,5 @@
+Attention: I will do my best to help out if your having issues hosting but I will no longer be doing any big updates like adding new features because im working on 2 new bots.
+
 # Orcinus
 Written in discord.js of course 
 
