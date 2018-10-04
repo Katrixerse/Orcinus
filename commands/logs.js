@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
         if (toenable === "1") {
             sql.run(`UPDATE scores SET logsenabled = "enabled" WHERE guildId = ${message.guild.id}`);
             message.channel.send("I have enabled logs for this guild.")
-            let modlog = message.guild.channels.find('name', row.logschannel);
+            let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
             const embed = new Discord.RichEmbed()
           .setColor(0x00A2E8)
           .setTitle("Case #" + row.casenumber + " | Action: Logs Enabled")
