@@ -161,7 +161,7 @@ client.on("message", async (message) => {
   if (row.invitelinkprotection === "disabled") return;
   if (message.member.hasPermission("KICK_MEMBERS")) return;
   message.delete()
-  let modlog = message.guild.channels.find('name', row.logschannel);
+  let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
   const embed = new Discord.RichEmbed()
     .setColor(0x00A2E8)
     .setTitle("Action: Auto Moderation")
@@ -185,7 +185,7 @@ client.on("message", async (message) => {
   if (row.websitelinkprotection === "disabled") return;
   if (message.member.hasPermission("KICK_MEMBERS")) return;
   message.delete()
-  let modlog = message.guild.channels.find('name', row.logschannel);
+  let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
   const embed = new Discord.RichEmbed()
     .setColor(0x00A2E8)
     .setTitle("Action: Auto Moderation")
@@ -214,7 +214,7 @@ client.on("message", async (message) => {
       const result = hasDuplicates.test(check1)
       if (result === true) { 
         message.delete()
-        let modlog = message.guild.channels.find('name', row.logschannel);
+        let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
         const embed = new Discord.RichEmbed()
           .setColor(0x00A2E8)
           .setTitle("Action: Auto Moderation")
