@@ -25,7 +25,7 @@ exports.run = (client, message, args) => {
         sql.run(`UPDATE scores SET autoroleenabled = "enabled", roletogive = "${roletogivefix}", casenumber = ${row.casenumber + 1} WHERE guildId = ${message.guild.id}`);
         message.channel.send("Members will now get the role " + roletogivefix + " when they join the guild from now on.")
 
-        let modlog = message.guild.channels.find('name', row.logschannel);
+        let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
         const embed = new Discord.RichEmbed()
             .setColor(0x00A2E8)
             .setTitle("Case #" + row.casenumber + " | Action:  Auto Role Enabled")
@@ -40,7 +40,7 @@ exports.run = (client, message, args) => {
         sql.run(`UPDATE scores SET autoroleenabled = "disabled", casenumber = ${row.casenumber + 1} WHERE guildId = ${message.guild.id}`);
     message.channel.send("I have disabled auto role for this guild.")
 
-    let modlog = message.guild.channels.find('name', row.logschannel);
+    let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
     const embed = new Discord.RichEmbed()
         .setColor(0x00A2E8)
         .setTitle("Case #" + row.casenumber + " | Action:  Auto Role Disabled")
