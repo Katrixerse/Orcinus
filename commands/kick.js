@@ -20,7 +20,7 @@ exports.run = (client, message, args) => {
     if (message.mentions.users.size < 1) return message.channel.send(usage);
     let user = message.guild.member(message.mentions.users.first());
   if (user.highestRole.position >= message.member.highestRole.position) return message.reply('I cant kick that member. They are the same level as you or higher. :x:');
-  let modlog = message.guild.channels.find('name', row.logschannel);
+  let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
   message.channel.send("***The User has been successfully kicked! :white_check_mark:***")
   if (!message.guild.member(user).kickable) return message.reply('I cant kick that member :x:');
   message.guild.member(user).kick(); 
