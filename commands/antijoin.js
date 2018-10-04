@@ -7,7 +7,7 @@ exports.run = (client, message, args) => {
          sql.get(`SELECT * FROM scores WHERE guildId ="${message.guild.id}"`).then(row => {
             const reason = args.join(" ") || `Moderator didn't give a reason.`;
             if (row.antijoin === "disabled") {
-            let modlog = message.guild.channels.find('name', row.logschannel);
+            let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
             sql.run(`UPDATE scores SET casenumber = ${row.casenumber + 1}, antijoin = "enabled" WHERE guildId = ${message.guild.id}`);
             message.channel.send("Anti-join has been enabled.")
             const embed = new Discord.RichEmbed()
@@ -21,7 +21,7 @@ exports.run = (client, message, args) => {
              if (row.logsenabled === "disabled") return;
              client.channels.get(modlog.id).send({embed});
             } else {
-            let modlog = message.guild.channels.find('name', row.logschannel);
+            let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
             sql.run(`UPDATE scores SET casenumber = ${row.casenumber + 1}, antijoin = "disabled" WHERE guildId = ${message.guild.id}`);
             message.channel.send("Anti-join has been disabled.")
             const embed = new Discord.RichEmbed()
