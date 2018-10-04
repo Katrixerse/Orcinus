@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
   if (user.length < 1) return message.channel.send("need to provide a valid user id to ban them");
   if (user === message.author.id) return message.channel.send(`:x: Well no you can't hackban yourself`);
   if (message.guild.members.get(user)) return message.channel.send(`:x: That user is in this server, please use ban instead`);
-  let modlog = message.guild.channels.find('name', row.logschannel);
+  let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
   message.guild.ban(user, 2);
   sql.run(`UPDATE scores SET casenumber = ${row.casenumber + 1} WHERE guildId = ${message.guild.id}`);
   const embed = new Discord.RichEmbed()
