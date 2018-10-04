@@ -47,6 +47,8 @@ Packages Needed
 - cheerio
 - got
 - sqlite
+- sqlite3
+- mathjs
 
 When done downloading the dependencies, run node Main.js, to start the bot.
 
