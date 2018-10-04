@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
         if (row.modonlycommands === "disabled") {
             sql.run(`UPDATE scores SET modonlycommands = "enabled", casenumber = ${row.casenumber + 1} WHERE guildId = ${message.guild.id}`);
             message.channel.send("Now only mods/mods+ can use the bot commands.")
-            let modlog = message.guild.channels.find('name', row.logschannel);
+            let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
             const embed = new Discord.RichEmbed()
                 .setColor(0x00A2E8)
                 .setTitle("Case #" + row.casenumber + " | Action: Mod-Only Cmds Enabled")
@@ -20,7 +20,7 @@ exports.run = (client, message, args) => {
         } else {
             sql.run(`UPDATE scores SET modonlycommands = "disabled", casenumber = ${row.casenumber + 1} WHERE guildId = ${message.guild.id}`);
             message.channel.send("Now anyone can use the bot commands.")
-            let modlog = message.guild.channels.find('name', row.logschannel);
+            let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
             const embed = new Discord.RichEmbed()
                 .setColor(0x00A2E8)
                 .setTitle("Case #" + row.casenumber + " | Action: Mod-Only Cmds Disabled")
