@@ -27,9 +27,9 @@ exports.run = async (client, message, args) => {
   if (messagez > 1440) return message.channel.send('Maximum time is 1 day (1440 minutes)');
   if (messagez < 1) return message.channel.send('Time must be at least 1 minute.');
   let reason = args.slice(2).join(' ') || `Moderator didn't give a reason.`;
-  let modlog = message.guild.channels.find('name', row.logschannel);
+  let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
   if (reason.length < 1) return;
-  let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted') || client.guilds.get(message.guild.id).roles.find('name', 'muted');
+  let muteRole = client.guilds.get(message.guild.id).roles.find(r => r.name == 'Muted') || client.guilds.get(message.guild.id).roles.find('name', 'muted');
   if (!muteRole) return message.channel.send(" I can not find a Muted role :x:");
 
   const embed = new Discord.RichEmbed()
