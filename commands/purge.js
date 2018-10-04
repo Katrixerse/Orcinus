@@ -14,7 +14,7 @@ const usage = new Discord.RichEmbed()
   .addField("Example", prefixtouse + "purge 20 server was raied.")
   .setDescription("Description: " + "Purges the channels messages (min 3 max 99)");
 
- let modlog = message.guild.channels.find('name', row.logschannel);
+ let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
  if (!message.member.permissions.has("MANAGE_MESSAGES")) {
    message.channel.send('Sorry, you do not have permission to perform the purge command. :x:');
    return;
