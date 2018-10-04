@@ -21,11 +21,6 @@ module.exports = async (client, message) => {
             if (message.channel.type === 'dm') return;
             if (!message.guild.member(client.user).hasPermission('SEND_MESSAGES')) return;
             if (!message.guild.member(client.user).hasPermission('VIEW_CHANNEL')) return;
-            
-            /*if (row.botlock === "enabled") {
-                let modlog = message.guild.channels.find('name', row.botlockchannel);
-                if (modlog) {
-                */
 
              if (row.modonlycommands === "enabled") {
                 if (!message.member.hasPermission("KICK_MEMBERS")) return;
