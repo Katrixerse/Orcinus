@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
   let user = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args.slice(0).join(" "));
   if (user.highestRole.position >= message.member.highestRole.position ) return message.reply('I cant ban that member. They are the same level as you or higher. :x:');
   let reason = args.slice(1).join(' ') || `Moderator didn't give a reason.`;
-  let modlog = message.guild.channels.find('name', row.logschannel);
+  let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
   if (!message.guild.member(user).bannable) return message.reply(' I cant ban that member. This may be happening because they are above me. :x:');
   message.guild.ban(user, 2);
   message.channel.send("***The User has been successfully banned! :white_check_mark:***")
