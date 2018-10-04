@@ -15,7 +15,7 @@ module.exports = (client, message, editedMessage) => {
     if (message === editedMessage) return;
     if (message.channel.type !== 'text') return;
     let guild = message.guild;
-    let modlog = guild.channels.find('name', row.logschannel);
+    let modlog = guild.channels.find(channel => channel.name == row.logschannel);
      if (!modlog) return;
     const embed = new Discord.RichEmbed()
     .setColor(0x00A2E8)
