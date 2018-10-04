@@ -19,11 +19,11 @@ exports.run = (client, message, args) => {
   let user = message.guild.member(message.mentions.users.first());
   if (user.highestRole.position >= message.member.highestRole.position) return message.reply('I cant give the role to that member. They are the same level as you or higher. :x:');
   let roleName = args.slice(1).join(' ')
-  let test123 = message.guild.roles.find('name', roleName)
+  let test123 = message.guild.roles.find(r => r.name == roleName)
   if (!test123) return message.channel.send("Role may not exist make sure you spell it exact")
   if (test123.position >= message.guild.member(client.user).highestRole.position) return message.reply(`Can't give roles that are the same level as me or higher. :x:`);
   let guild = message.member.guild;
-  let modlog = message.guild.channels.find('name', row.logschannel);
+  let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
   if (roleName.length < 1) return message.reply('You must give a role name to add a user to it');
   message.guild.member(user.user.id).addRole(test123);
   message.channel.send(user.user.username + ", has been given the role: " + roleName)
