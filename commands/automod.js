@@ -23,7 +23,7 @@ exports.run = (client, message, args) => {
                 if (toenable === "enable" && thingtoenable === "antiinvite") {
                        sql.run(`UPDATE scores SET automoderation = "enabled", invitelinkprotection = "enabled", casenumber = ${row.casenumber + 1} WHERE guildId = ${message.guild.id}`);
                        message.channel.send("Auto moderation with anti invite is has been enabled for this guild.")
-                       let modlog = message.guild.channels.find('name', row.logschannel);
+                       let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
                        const embed = new Discord.RichEmbed()
                            .setColor(0x00A2E8)
                            .setTitle("Case #" + row.casenumber + " | Action:  Auto Mod Enabled")
