@@ -18,7 +18,7 @@ client.on('uncaughtException', (err) => {
 
 process.on('unhandledRejection', (reason, promise) => {
   console.log('[FATAL] Possibly Unhandled Rejection at: Promise ', promise, ' reason: ', reason.message);
-  process.exit(0);
+
 });
 
 client.on('disconnect', () => {
