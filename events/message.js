@@ -34,6 +34,9 @@ module.exports = async (client, message) => {
                         let commandFile = require(`../commands/${command}.js`);
                         commandFile.run(client, message, args);
                     } catch (err) {
+                        if (err instanceof Error && err.code === "MODULE_NOT_FOUND") {
+                            return;
+                    } else
                         console.log(err)
                     }
               } else {
@@ -47,8 +50,11 @@ module.exports = async (client, message) => {
                     let commandFile = require(`../commands/${command}.js`);
                     commandFile.run(client, message, args);
                 } catch (err) {
-                    console.log(err)
-                }
+                        if (err instanceof Error && err.code === "MODULE_NOT_FOUND") {
+                            return;
+                    } else
+                        console.log(err)
+                    }
             } 
           })
         }
