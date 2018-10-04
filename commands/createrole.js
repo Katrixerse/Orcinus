@@ -26,7 +26,7 @@ exports.run = (client, message, args) => {
                 name: `${rolename}`,
                 color: `${color2}`
             });
-            let modlog = message.guild.channels.find('name', row.logschannel);
+            let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
             message.reply("I have made the role: " + rolename + " with the color: " + color2);
             sql.run(`UPDATE scores SET casenumber = ${row.casenumber + 1} WHERE guildId = ${message.guild.id}`);
             const embed = new Discord.RichEmbed()
