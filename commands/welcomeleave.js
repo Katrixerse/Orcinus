@@ -35,7 +35,7 @@ exports.run = (client, message, args) => {
             if (newsomething.length > 25) return message.channel.send("channel can't be longer then 25 characters")
             sql.run(`UPDATE scores SET wlchannel = "${newwlchannelfix}", casenumber = ${row.casenumber +1} WHERE guildId = ${message.guild.id}`);
             message.channel.send("I have set the new guild welcome channel to " + newwlchannelfix)
-            let modlog = message.guild.channels.find('name', row.logschannel);
+            let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
              const embed = new Discord.RichEmbed()
                 .setColor(0x00A2E8)
                 .setTitle("Case #" + row.casenumber + " | Action: Welcome Channel Changed")
@@ -53,7 +53,7 @@ exports.run = (client, message, args) => {
             if (newsomething.length > 400) return message.channel.send("Welcome message can't be longer then 400 characters")
             sql.run(`UPDATE scores SET welcomemessage = "${newwelcomemessagefix}", casenumber = ${row.casenumber +1} WHERE guildId = ${message.guild.id}`);
             message.channel.send("I have set the new guild welcome message to " + newwelcomemessagefix)
-            let modlog = message.guild.channels.find('name', row.logschannel);
+            let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
              const embed = new Discord.RichEmbed()
                 .setColor(0x00A2E8)
                 .setTitle("Case #" + row.casenumber + " | Action: Welcome Message Changed")
@@ -71,7 +71,7 @@ exports.run = (client, message, args) => {
             if (newsomething.length > 400) return message.channel.send("Leave message can't be longer then 400 characters.")
             sql.run(`UPDATE scores SET leavemessage = "${newleavemessagefix}", casenumber = ${row.casenumber + 1} WHERE guildId = ${message.guild.id}`);
             message.channel.send("I have set the new guild leave message to " + newleavemessagefix)
-            let modlog = message.guild.channels.find('name', row.logschannel);
+            let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
              const embed = new Discord.RichEmbed()
            .setColor(0x00A2E8)
            .setTitle("Case #" + row.casenumber + " | Action: Leave Message Changed")
@@ -84,7 +84,7 @@ exports.run = (client, message, args) => {
         } else if (numberpicked === 6) {
             sql.run(`UPDATE scores SET dmmessage = "enabled", casenumber = ${row.casenumber + 1} WHERE guildId = ${message.guild.id}`);
             message.channel.send("I have made it welcome/leave messages will go to dms.")
-            let modlog = message.guild.channels.find('name', row.logschannel);
+            let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
              const embed = new Discord.RichEmbed()
            .setColor(0x00A2E8)
            .setTitle("Case #" + row.casenumber + " | Action: Enabled welcome/leave in dms")
@@ -96,7 +96,7 @@ exports.run = (client, message, args) => {
         } else if (numberpicked === 7) {
             sql.run(`UPDATE scores SET dmmessage = "disabled", casenumber = ${row.casenumber + 1} WHERE guildId = ${message.guild.id}`);
             message.channel.send("I have made it welcome/leave messages will go to the channel.")
-            let modlog = message.guild.channels.find('name', row.logschannel);
+            let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
              const embed = new Discord.RichEmbed()
            .setColor(0x00A2E8)
            .setTitle("Case #" + row.casenumber + " | Action: Enabled welcome/leave in dms")
