@@ -12,7 +12,7 @@ exports.run = (client, message, args) => {
      sql.get(`SELECT * FROM scores WHERE guildId ="${message.guild.id}"`).then(row => {
      sql.run(`UPDATE scores SET prefix = "${newprefixfix}", casenumber = ${row.casenumber + 1} WHERE guildId = ${message.guild.id}`);
      message.channel.send("I have set the new guild prefix to " + newprefix)
-     let modlog = message.guild.channels.find('name', row.logschannel);
+     let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
       const embed = new Discord.RichEmbed()
         .setColor(0x00A2E8)
         .setTitle("Case #" + row.casenumber + " | Action: Prefix Change")
