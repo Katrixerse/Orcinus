@@ -7,8 +7,8 @@ exports.run = (client, message, args) => {
     sql.get(`SELECT * FROM scores WHERE guildId ="${message.guild.id}"`).then(row => {
         var userz = message.guild.members.array();
         const roletogive = args.join(" ")
-        let modlog = message.guild.channels.find('name', row.logschannel);
-        let subscriberRole = client.guilds.get(message.guild.id).roles.find('name', roletogive);
+        let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
+        let subscriberRole = client.guilds.get(message.guild.id).roles.find(r => r.name == roletogive);
         if (!subscriberRole) return message.channel.send("I can not find the role " + roletogive + " :x:");
 
         if (row.logsenabled === 'disabled') {
