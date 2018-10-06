@@ -8,6 +8,9 @@ If you find any bugs please make a issue so i can look into it and fix it
 Made By:
 - SyntheticGenerations (me)
 
+Co-Owner:
+EthericDestruction#9748
+
 Special Thanks too:
 - dragonfire535 - Some api commands
 - YorkAARGH - How to use sqlite from this guide https://anidiotsguide_old.gitbooks.io/discord-js-bot-guide/content/coding-guides/storing-data-in-an-sqlite-file.html
