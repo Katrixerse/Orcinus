@@ -1,30 +1,28 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
+const snekfetch = require('snekfetch');
+const types = ['top'];
 exports.run = async (client, message, args) => {
-      const urban = require('urban')
-         try {
-          var search = urban(args.join(' '));
-        } catch (err) {
-          return message.channel.send("**There were no results for this search term**");
-        }
-        if (!search || !search.first || typeof search.first !== "function") return;
-        search.first(function (json) {
-          if (json) {
-            if (!json.definition || !json.example) return;
-            if (json.definition.length > 1000) json.definition = json.definition.substr(0, 1000);
-            if (json.example.length > 1000) json.example = json.example.substr(0, 1000);
-           const embed = new Discord.RichEmbed()
-           .setColor(0x00A2E8)
-           .addField('Definition:', json.definition)
-           .addField('Example:', json.example)
-           const filtercheck = ["xxx", "porn", "fuck", "sex", "18+", "anal", "gay", "lesbian", "dick", "cock", "boobs", "ass", "nsfw", "tits", "nudes", "hentai", "nodes", "vagina", "pussy", "penis"]
-           if (filtercheck.some(word2 => json.definition.toLowerCase().includes(word2))) return message.channel.send("Not allowed to get definitions for nsfw content.");
-           const filtercheck2 = ["xxx", "porn", "fuck", "sex", "18+", "anal", "gay", "lesbian", "dick", "cock", "boobs", "ass", "nsfw", "tits", "nudes", "hentai", "nodes", "vagina", "pussy", "penis"]
-           if (filtercheck2.some(word2 => json.example.toLowerCase().includes(word2))) return message.channel.send("Not allowed to get definitions for nsfw content.");
-           message.channel.send({embed})
-          } else {
-           message.channel.send("**There were no results for this search term**")
-          }
-        });
+  const word = args.join(" ")
+  try {
+    const { body } = await snekfetch
+      .get('http://api.urbandictionary.com/v0/define')
+      .query({ term: word });
+    if (!body.list.length) return message.channel.send('Could not find any results.');
+    const data = body.list[types === 'top' ? 0 : Math.floor(Math.random() * body.list.length)];
+    const embed = new Discord.RichEmbed()
+      .setColor(0x32A8F0)
+      .setAuthor('Urban Dictionary', 'https://i.imgur.com/Fo0nRTe.png', 'https://www.urbandictionary.com/')
+      .setURL(data.permalink)
+      .setTitle(data.word)
+      .setDescription((data.definition))
+      .addField('❯ Example', data.example);
+    const filtercheck = ["xxx", "porn", "sex", "18+","nsfw", "hentai", "dick", "vagina"]
+    if (filtercheck.some(word2 => data.definition.toLowerCase().includes(word2))) return message.channel.send("Not allowed to search nsfw content.");
+    if (filtercheck.some(word3 => data.word.toLowerCase().includes(word3))) return message.channel.send("Not allowed to search nsfw content.");
+    message.channel.send(embed);
+  } catch (err) {
+    return message.channel.send(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
+  }
 }
    
