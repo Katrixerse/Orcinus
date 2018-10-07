@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
       .setURL(data.permalink)
       .setTitle(data.word)
       .setDescription((data.definition))
-      .addField('❯ Example', data.example);
+      .addField('Example', data.example);
     const filtercheck = ["xxx", "porn", "sex", "18+","nsfw", "hentai", "dick", "vagina", "pussy"]
     if (filtercheck.some(word2 => data.definition.toLowerCase().includes(word2))) return message.channel.send("Not allowed to search nsfw content.");
     if (filtercheck.some(word3 => data.word.toLowerCase().includes(word3))) return message.channel.send("Not allowed to search nsfw content.");
