@@ -15,10 +15,10 @@ module.exports = async (client, message) => {
       })
     })
 
+    if (message.author.bot) return;
+    if (message.channel.type === 'dm') return;
     sql.get(`SELECT * FROM scores WHERE guildId ="${message.guild.id}"`).then(row => {
         if (!row) return;
-            if (message.author.bot) return;
-            if (message.channel.type === 'dm') return;
             if (!message.guild.member(client.user).hasPermission('SEND_MESSAGES')) return;
             if (!message.guild.member(client.user).hasPermission('VIEW_CHANNEL')) return;
 
