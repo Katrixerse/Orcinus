@@ -10,8 +10,6 @@ const config = require("./assets/jsons/config.json");
 
 client.on('warn', err => console.warn('[WARNING]', err));
 
-client.on('DiscordAPIError', err => console.log('[WARNING]', err));
-
 client.on('uncaughtException', (err) => {
     console.log("Uncaught Exception: " + err)
     process.exit(1)
