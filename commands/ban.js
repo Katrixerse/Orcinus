@@ -17,7 +17,7 @@ exports.run = (client, message, args) => {
   if (!message.guild.member(client.user).hasPermission('BAN_MEMBERS')) return message.reply('Sorry, i dont have the perms to do this cmd i need BAN_MEMBERS. :x:')
   if (message.mentions.users.size < 1) return message.channel.send(usage)
   let user = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args.slice(0).join(" "));
-  if (user.highestRole.position >= message.member.highestRole.position ) return message.reply('I cant ban that member. They are the same level as you or higher. :x:');
+  if (user.highestRole.position >= message.member.highestRole.position) return message.reply('I cant ban that member. They are the same level as you or higher. :x:');
   let reason = args.slice(1).join(' ') || `Moderator didn't give a reason.`;
   let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
   if (!message.guild.member(user).bannable) return message.reply(' I cant ban that member. This may be happening because they are above me. :x:');
