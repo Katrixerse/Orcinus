@@ -3,7 +3,7 @@ const yt = require('ytdl-core');
 const snekfetch = require('snekfetch');
 const sql = require("sqlite");
 sql.open("./assets/guildsettings.sqlite");
-const client = new Discord.Client();
+const client = new Discord.Client({disableEveryone: true, disabledEvents: "RELATIONSHIP_ADD", "RELATIONSHIP_REMOVE", "TYPING_START"});
 let dispatcher;
 
 if (Number(process.version.slice(1).split(".")[0]) < 8) {
