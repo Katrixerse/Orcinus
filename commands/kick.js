@@ -21,8 +21,8 @@ exports.run = (client, message, args) => {
     let user = message.guild.member(message.mentions.users.first());
   if (user.highestRole.position >= message.member.highestRole.position) return message.reply('I cant kick that member. They are the same level as you or higher. :x:');
   let modlog = message.guild.channels.find(channel => channel.name == row.logschannel);
-  message.channel.send("***The User has been successfully kicked! :white_check_mark:***")
-  if (!message.guild.member(user).kickable) return message.reply('I cant kick that member :x:');
+  message.channel.send("***The user tagged has been successfully kicked! :white_check_mark:***")
+  if (!message.guild.member(user).kickable) return message.reply('I can\'t kick that member :x:');
   message.guild.member(user).kick(); 
   const embed = new Discord.RichEmbed()
     .setColor(0x00A2E8)
