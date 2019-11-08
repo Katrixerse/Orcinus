@@ -1,5 +1,11 @@
 const Discord = require("discord.js");
-const client = new Discord.Client({disableEveryone: true, disabledEvents: "CHANNEL_PINS_UPDATE", "GUILD_BAN_ADD", "GUILD_BAN_REMOVE", "RELATIONSHIP_ADD", "RELATIONSHIP_REMOVE", "TYPING_START"});
+const client = new Discord.Client({
+  disabledEvents: ["RELATIONSHIP_ADD", "RELATIONSHIP_REMOVE", "TYPING_START"],
+  disableEveryone: true,
+  messageCacheMaxSize: 150,
+  messageCacheLifetime: 240,
+  messageSweepInterval: 300,
+});
 const fs = require("fs");
 const sql = require("sqlite");
 sql.open("./assets/guildsettings.sqlite");
