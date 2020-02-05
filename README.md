@@ -1,4 +1,4 @@
-Attention: I will do my best to help out if your having issues hosting but I will no longer be doing any big updates like adding new features because im working on 2 new bots.
+Attention: Ive stopped working on this bot entirely and will now be archived please use: https://github.com/Katrixerse/Corius my newer bot instead.
 
 # Orcinus
 Written in discord.js of course 
